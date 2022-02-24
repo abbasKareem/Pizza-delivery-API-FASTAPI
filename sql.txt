@@ -1,0 +1,21 @@
+CREATE TABLE "user" (
+        id SERIAL NOT NULL, 
+        username VARCHAR(25), 
+        email VARCHAR(80), 
+        password TEXT, 
+        is_staff BOOLEAN, 
+        is_active BOOLEAN, 
+        PRIMARY KEY (id), 
+        UNIQUE (username), 
+        UNIQUE (email)
+)
+
+CREATE TABLE orders (
+        id SERIAL NOT NULL, 
+        quantity INTEGER NOT NULL, 
+        order_status VARCHAR(255), 
+        pizza_size VARCHAR(255), 
+        user_id INTEGER, 
+        PRIMARY KEY (id), 
+        FOREIGN KEY(user_id) REFERENCES "user" (id)
+)
